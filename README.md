@@ -1,0 +1,2 @@
+# blog
+Kingyo.dev blog

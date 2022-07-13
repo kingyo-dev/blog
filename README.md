@@ -1,2 +1,3 @@
-# blog
-Kingyo.dev blog
+# Kingyo.dev blog
+
+Мой бложек на всякие там IT темы.

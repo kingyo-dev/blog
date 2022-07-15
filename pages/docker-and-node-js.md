@@ -111,7 +111,7 @@ docker run -d -p 8080:80 --name nodejs-server nodejs
 
 - `nodejs` - название образа.
 
-Проверка: http://localhost:8080/
+Проверка: [http://localhost:8080/](http://localhost:8080/)
 
 ### Список контейнеров.
 
@@ -133,11 +133,11 @@ docker rm nodejs-server
 
 ## Где брать образы
 
-https://hub.docker.com/
+[https://hub.docker.com/](https://hub.docker.com/)
 
-Ранее, в `Dockerfile` было указано `FROM node:18`. Это не какая то магия, это тип и версия образа который Docker скачивает с сайта https://hub.docker.com/ и затем помещает в него наше приложение. 
+Ранее, в `Dockerfile` было указано `FROM node:18`. Это не какая то магия, это тип и версия образа который Docker скачивает с сайта [https://hub.docker.com/](https://hub.docker.com/) и затем помещает в него наше приложение. 
 
-Читая информацию о образах node на сайте https://hub.docker.com/_/node узнаем, что есть версия `alpine` и `slim`. 
+Читая информацию о образах node на сайте [https://hub.docker.com/_/node](https://hub.docker.com/_/node) узнаем, что есть версия `alpine` и `slim`. 
 
 - `alpine` - образ на базе легковесного [Alpine linux](https://www.alpinelinux.org/).
 - `slim` - не рекомендованная, урезанная версия образа с минимумом для запуска node приложений.
@@ -150,7 +150,7 @@ https://hub.docker.com/
 
 ## Доступ к данным контейнера
 
-Официальная документация: https://docs.docker.com/storage/
+Официальная документация: [https://docs.docker.com/storage/](https://docs.docker.com/storage/)
 
 ### Типы хранилищ
 

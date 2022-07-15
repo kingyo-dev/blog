@@ -10,6 +10,10 @@
 
 В общем, вот небольшой гайд.
 
+## Создание токена (короче не бывает)
+
+[https://github.com/settings/tokens](https://github.com/settings/tokens)
+
 ## Создание токена (коротко)
 
 - Settings (настройки аккаунта)

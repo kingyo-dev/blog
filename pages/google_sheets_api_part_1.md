@@ -1,4 +1,4 @@
-# Работа с таблицами Google через Google Sheet API
+# Работа с таблицами Google через Google Sheet API. Часть первая: аутентификация.
 
 - [Регистрация и настройка приложения в Google Cloud](#регистрация-и-настройка-приложения-в-google-cloud)
   - [Создаем новый проект](#создаем-новый-проект)
@@ -35,25 +35,25 @@
 
 Рядом с кнопкой меню `Google Cloud` нажимаем кнопку выбора проекта.
 
-![Select Project](assets/google_sheets_api/20220716_181829.png)
+![Select Project](assets/google_sheets_api_part_1/20220716_181829.png)
 
 В появившемся окне выбора проекта `Select Project` нажимаем кнопку `NEW PROJECT`
 
-![NEW PROJECT](assets/google_sheets_api/20220716_181925.png)
+![NEW PROJECT](assets/google_sheets_api_part_1/20220716_181925.png)
 
 Указываем имя проекта `Project name` и жмем кнопку `CREATE`.
 
-![CREATE](assets/google_sheets_api/20220716_182226.png)
+![CREATE](assets/google_sheets_api_part_1/20220716_182226.png)
 
 Выбираем созданный проект рядом с кнопкой меню `Google Cloud`
 
-![Select Project](assets/google_sheets_api/20220716_182532.png)
+![Select Project](assets/google_sheets_api_part_1/20220716_182532.png)
 
 ## Согласия и тестеры
 
 В меню Google Cloud выбираем `APIs & Services` \ `OAuth consent screen`.
 
-![ADD USERS](assets/google_sheets_api/20220717_150229.png)
+![ADD USERS](assets/google_sheets_api_part_1/20220717_150229.png)
 
 Выбираем режим согласия.
 
@@ -67,19 +67,19 @@
 
 Жмем `SAVE AND CONTINUE`.
 
-![OAuth consent screen](assets/google_sheets_api/20220717_151024.png)
+![OAuth consent screen](assets/google_sheets_api_part_1/20220717_151024.png)
 
 В разделе `Scopes` оставляем все как есть, сразу жмем кнопку `SAVE AND CONTINUE`.
 
 В разделе `Test users` жмем `ADD USER`.
 
-![ADD USER](assets/google_sheets_api/20220717_151531.png)
+![ADD USER](assets/google_sheets_api_part_1/20220717_151531.png)
 
 В появившемся окне указываем `email` пользователя которому будет доступно приложение. 
 
 Как минимум укажите ваш `email`. Система не считает вас тестером, хоть вы и владелец проекта.
 
-![Tester email](assets/google_sheets_api/20220717_151655.png)
+![Tester email](assets/google_sheets_api_part_1/20220717_151655.png)
 
 Все сделанные настройки всегда можно изменить в разделе `APIs & Services` \ `OAuth consent screen`
 
@@ -89,25 +89,25 @@
 
 Жмем кнопку `CREATE CREDENTIALS`.
 
-![CREATE CREDENTIALS](assets/google_sheets_api/20220716_182856.png)
+![CREATE CREDENTIALS](assets/google_sheets_api_part_1/20220716_182856.png)
 
 Выбираем `OAuth client ID`.
 
-![OAuth client ID](assets/google_sheets_api/20220716_183028.png)
+![OAuth client ID](assets/google_sheets_api_part_1/20220716_183028.png)
 
 Устанавливаем `Application type` в `Desktop app`. Жмем кнопку `CREATE`
 
-![Application type](assets/google_sheets_api/20220716_184532.png)
+![Application type](assets/google_sheets_api_part_1/20220716_184532.png)
 
 В появившемся окне жмем кнопку `DOWNLOAD JSON`.
 
-![DOWNLOAD JSON](assets/google_sheets_api/20220716_184817.png)
+![DOWNLOAD JSON](assets/google_sheets_api_part_1/20220716_184817.png)
 
 Сохраняем в папку приложения как `credentials.json`
 
 > Файл ключа можно получить в разделе `APIs & Services` / `Credentials` в списке ключей `OAuth 2.0 Client IDs` нажав иконку в виде стрелочки вниз (скачать). 
 >
-> ![](assets/google_sheets_api/20220716_185603.png)
+> ![](assets/google_sheets_api_part_1/20220716_185603.png)
 
 ## Подключаем поддержку Google Sheets API
 
@@ -115,15 +115,15 @@
 
 Нажимаем кнопку `ENABLE API AND SERVICES`.
 
-![ENABLE API AND SERVICES](assets/google_sheets_api/20220716_221743.png)
+![ENABLE API AND SERVICES](assets/google_sheets_api_part_1/20220716_221743.png)
 
 Находим и нажимаем `Google Sheets API`.
 
-![Google Sheets API](assets/google_sheets_api/20220716_221953.png)
+![Google Sheets API](assets/google_sheets_api_part_1/20220716_221953.png)
 
 В появившемся окне нажимаем кнопку `ENABLE`
 
-![ENABLE](assets/google_sheets_api/20220716_222249.png)
+![ENABLE](assets/google_sheets_api_part_1/20220716_222249.png)
 
 # Приложение
 
@@ -308,19 +308,19 @@ Enter the code from that page here:
 
 > Помним: адрес электронный почты пользователя должен быть добавлен в список тестеров проекта приложения.
 
-![Выбор аккаунта](assets/google_sheets_api/20220718_135113.png)
+![Выбор аккаунта](assets/google_sheets_api_part_1/20220718_135113.png)
 
 Нас предупреждают, что приложение не прошло проверку. 
 
 Жмем `Продолжить`.
 
-![Эксперты Google](assets/google_sheets_api/20220718_135319.png)
+![Эксперты Google](assets/google_sheets_api_part_1/20220718_135319.png)
 
 Соглашаемся с тем, что приложение будет иметь доступ к таблицам Google. 
 
 Жмем `Продолжить`.
 
-![Доступ к таблицам](assets/google_sheets_api/20220718_135623.png)
+![Доступ к таблицам](assets/google_sheets_api_part_1/20220718_135623.png)
 
 В результате Google перенаправляет нас по ссылке:
 
@@ -349,7 +349,7 @@ Spreadsheet ID: 1eQ-xh3GlsZVmop2CR5Vx7mhxtHRE_Qa5yj8f1bYzd6w
 
 Заходим в таблицы Google и видим созданную таблицу с названием `test`.
 
-![Google Spreadsheets](assets/google_sheets_api/20220718_141259.png)
+![Google Spreadsheets](assets/google_sheets_api_part_1/20220718_141259.png)
 
 > Новая талица с названием `test` будет создаваться при каждом запуске программы =) 
 
@@ -375,7 +375,7 @@ Spreadsheet ID: 1eQ-xh3GlsZVmop2CR5Vx7mhxtHRE_Qa5yj8f1bYzd6w
 
 Выбираем `Web application`, заполняем и добавляем нужный нам `URI`.
 
-![Web application](assets/google_sheets_api/20220718_150428.png)
+![Web application](assets/google_sheets_api_part_1/20220718_150428.png)
 
 В появившемся окне жмем `DOWNLOAD JSON` и сохраняем в папку приложения под именем `credentials.json`.
 

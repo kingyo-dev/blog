@@ -1,179 +1,197 @@
-# Установка Cordova в Windows
+# Установка и настройка Apache Cordova на Windows для создания приложения на Android
 
-Установить Cordova это просто... Ну, так можно подумать посетив сайт [https://cordova.apache.org](https://cordova.apache.org/)
+- [Установка Open JDK (Java Development Kit)](#установка-open-jdk-java-development-kit)
+- [Установка Gradle](#установка-gradle)
+- [Установка Android Studio](#установка-android-studio)
+- [Установка Apache Cordova](#установка-apache-cordova)
+- [Создание проекта](#создание-проекта)
+- [Запуск проекта](#запуск-проекта)
+- [Сборка проекта](#сборка-проекта)
+- [Иконка приложения](#иконка-приложения)
+
+`Apache Cordova` позволяет программистам создавать приложения для мобильных устройств с помощью `CSS3`, `HTML5` и `JavaScript`, вместо того, чтобы использовать конкретные платформы API, такие как `Android`, `IOS` или `Windows Phone`.
+
+# Установка Open JDK (Java Development Kit)
+
+`Open JDK` - комплект разработчика приложений на `Java`.
+
+Скачать и распаковать в папку с программами: [openjdk-11.0.2_windows-x64_bin.zip](https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip)
+
+Страница скачивания OpenJDK: [https://jdk.java.net/archive/](https://jdk.java.net/archive/)
+
+Добавляем переменную окружения `JAVA_HOME`:
 
 ```
-npm install -g cordova
-cordova create MyApp
-cd MyApp
-cordova platform add browser
-cordova run browser
+JAVA_HOME = z:\Programs\jdk\jdk-11.0.2
 ```
 
-Cordova, спасибо за `browser`, вот только ради этого тебя и ставил... НЕТ. 
+![JAVA_HOME](assets/install-cordova-on-windows/20220724_145002.png)
 
-Итак, в Wikipedia сказано.
-
-Apache Cordova позволяет программистам создавать приложения для мобильных устройств с помощью CSS3, HTML5 и JavaScript, вместо того, чтобы использовать конкретные платформы API, такие как Android, IOS или Windows Phone.
-
-Проще говоря, вы можете взять код вашего сайта с Hello World и превратить его в приложение для мобильного телефона.
-
-Штош, IPhone у меня нет, по этому будем собирать под Android.
+Добавляем путь в `PATH`
 
 ```
-cordova platform add browser
-cordova run browser
+z:\Programs\jdk\jdk-11.0.2\bin
 ```
 
-И после этого действа ваш проект откроется угадайте где? Правильно, в броузере =( Почему? Потому, что у вас не установлено средств для сборки и отладки android приложений которые входят в состав `Android Studio`.
+![PATH](assets/install-cordova-on-windows/20220724_145254.png)
 
-## Скачиваем и устанавливаем `Android Studio`.
+# Установка Gradle
 
-[https://developer.android.com/studio#downloads](https://developer.android.com/studio#downloads)
+`Gradle` - пакетный менеджер для Java.
 
-Я не любитель того, когда на моем компьютере что то происходит без моего ведома, по этому пойдем нестандартным путем и скачаем `zip` вместо `exe`. В моем случаем это `android-studio-2021.2.1.15-windows.zip`. Но, если вы не понимаете зачем я это делаю, и у вас нет специально отведенного места для программ установленных вручную, то лучше качайте `.exe`.
+Скачать и распаковать в папку с программами: [https://gradle.org/releases/](https://gradle.org/releases/)
 
-Распаковываем, заходим в папку `bin`, запускаем `studio64.exe`.
-
-При первом запуске вас спросят о разном, но главное, это 
-расположение Android SDK. По умолчанию это `%APPDATA%/android/sdk`, но я укажу другую папку по причинам описанным выше.
-
-Интересный факт: Android Studio не дала установить sdk внутри папки студии.
-
-![Указываем путь к Android SDK](assets/install-cordova-on-windows/2022-06-15_13-57-40.png)
-
-## Настройка SDK
-
-Если все прошло успешно должно появится следующее окно.
-
-![Welcome to Android Studio](assets/install-cordova-on-windows/2022-06-15_14-24-41.png)
-
-Идем в раздел `More Actions`, выбираем `SDK Manager`.
-
-![Добавляем Android SDK Command Line Tools (lates)](assets/install-cordova-on-windows/2022-06-15_14-34-00.png)
-
-В разделе `SDK Tools` добавляем `Android SDK Command Line Tools (lates)`.
-
-Затем, справа внизу, ставим галочку `Show Package Details` и в списке `Android SDK Build Tools` выбираем версию `30.0.3`. Именно это версия утилит требуется `Cordova` на момент написания этого текста.
-
-![30.0.3](assets/install-cordova-on-windows/2022-06-15_17-08-25.png)
-
-Также, обращаем внимание на путь `Android SDK Location`, он потребуется нам позже.
-
-Не забываем нажать `Apply`
-
-## JDK 11 (OpenJDK 11)
-
-Россия под санкциями, при создании аккаунта невозможно указать Россию. Хартьфу на них, опухнут с голоду без нашего гаZа тVари. 
-
-Качаем OpenJDK.
-
-[https://jdk.java.net/archive/](https://jdk.java.net/archive/)
-
-Более точная ссылка: [openjdk-11.0.2_windows-x64_bin.zip](https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip)
-
-Куда то распаковываем, запоминаем куда. 
-
-## Gradle
-
-Какой то сборщик... в общем нужен.
-
-[https://gradle.org/install/](https://gradle.org/install/)
-
-Вроде тут можно выбрать версию: [https://gradle.org/releases/](https://gradle.org/releases/)
-
-На момент написания статьи это `7.4.2`.
-
-Версию я выбрал `complite` которая на 50 мегабайт больше чем `binary` которая весит порядка 100 мегабайт. (Ох уж это будущее)
-
-Распаковываем, не бываем куда.
-
-## Настройка переменных среды
-
-Жмем кнопку Windows на клавиатуре и начинаем набирать `среды`. Поиск находит `Изменение системных переменных среды`, его и нажимаем.
-
-Либо идем в `Параметры` -> `Система` -> `О системе` -> справа находим `Сведенья о системе` -> слева `Дополнительные параметры системы`
-
-Возможно, есть другой путь, но я его не знаю.
-
-В появившемся окну во вкладке дополнительно жмем `Параметры среды`.
-
-![Параметры среды](assets/install-cordova-on-windows/2022-06-15_15-21-20.png)
-
-Все переменные создаем в разделе `Системные переменные`
-
-![Системные переменные](assets/install-cordova-on-windows/2022-06-15_15-28-54.png)
-
-### ANDROID_SDK_ROOT
-
-ANDROID_SDK_ROOT - указывает на место, где расположен `Android SDK`. Узнать точное расположение можно в `Android Studio` в разделе `SDK Manager` о котором говорилось выше.
-
-Создаем переменную и указываем соответствующее значение. 
-
-У меня это `z:\Programs\android-sdk`
-
-![ANDROID_SDK_ROOT](assets/install-cordova-on-windows/2022-06-15_15-17-16.png)
-
-### JAVA_HOME
-
-JAVA_HOME - указывает расположение JDK 
-
-У меня это `z:\Programs\jdk\jdk-11.0.2`
-
-### PATH
-
-Переменная `Path` у вас скорее всего уже есть и создавать ее не нужно. Просто заходим внутрь и добавляем следующие значения:
-
-* `z:\Programs\android-sdk\cmdline-tools` 
-* `z:\Programs\android-sdk\platform-tools`
-* `z:\Programs\android-sdk\emulator`
-* `z:\Programs\android-sdk\build-tools\33.0.0`
-* `z:\Programs\gradle\bin`
-* `z:\Programs\jdk\jdk-11.0.2\bin`
-
-![PATH](assets/install-cordova-on-windows/2022-06-15_15-55-49.png)
-
-Как видите, часть путей это утилиты из `Android SDK`, а также `Gradle` и `JDK`.
-
-# Виртуально устройство.
-
-Для просмотра результата нам понадобится создать эмулятор устройства на котором будет запускаться наше приложение при отладке. В `Android Studio` на странице приветствия, там же, где и `SDK Manager` заходим в `Virtual Device Manager`.
-
-![Virtual Device Manager](assets/install-cordova-on-windows/2022-06-15_16-24-05.png)
-
-Создаем новое устройство `Create device`
-
-Выбираем понравившееся из списке, либо создаем свое. Разница там только в разрешении экрана и объеме памяти, так что особо не заморачиваемся.
-
-![Create Device](assets/install-cordova-on-windows/2022-06-15_16-30-02.png)
-
-Выбираем интересующую нас версию OS и нажимаем кнопку `Download`.
-
-![Download OS](assets/install-cordova-on-windows/2022-06-15_16-32-07.png)
-
-Под конец называем наш первый телефон `default`. Именно телефон с таким названием `Cordova` использует по умолчанию.
-
-![Device name](assets/install-cordova-on-windows/2022-06-15_16-34-48.png)
-
-Теперь можно поиграться, в списке устройств появится телефон с названием `default`, справа будет стрелочка для запуска, нажимаем, ждем, и о боже, у вас на экране работающий телефон на `Android`. Можно даже в игры поиграть. Хотя, в 11 android под телефон что я выбрал не было `Play Market`, но в других я точно видел, например в `Android 7.0 (Nougat)`.
-
-## MyApp
-
-Очень надеюсь что у вас установленна `NodeJS`, так как без нее ничего не получится а процесс ее установки выходит за рамки статьи.
-
-Если нет, качаем тут: [https://nodejs.org/en/](https://nodejs.org/en/)
-
-Если у вас была запущена консоль, закройте ее и запустите вновь, что бы обновились переменные среды.
-
-Зайдите в папку где вы хотите создать проект. 
-
-Первым делом устанавливаем `cordova`. Установку делаем глобально, по этому повторят этот щаг в будущем не придется.
+Добавляем путь в `PATH`
 
 ```
-npm install -g cordova
+z:\Programs\gradle-7.4.2\bin
 ```
 
-Теперь, при помощи установленной нами `Cordova` создаем проект и добавляем к нему платформу `android`.
+![jdk-18.0.1.1\bin](assets/install-cordova-on-windows/20220724_145112.png)
+
+
+# Установка Android Studio
+
+`Android Studio` - среда разработки приложений для `Android`.
+
+Скачать и распаковать в папку с программами или установить: [https://developer.android.com/studio#downloads](https://developer.android.com/studio#downloads)
+
+Я использую `zip` версию (No .exe installer), по этому порядок действий может отличаться от инсталлятора.
+
+Запускаем `studio64.exe`.
+
+Импортирование настроек - импортировать нечего, устанавливаем в `Do not import`.
+
+![Import Android Studio Settings](assets/install-cordova-on-windows/20220724_134840.png)
+
+Помощь в улучшении `Android Studio` - выбираем по вкусу.
+
+![Help Improve Android Studio](assets/install-cordova-on-windows/20220724_135042.png)
+
+Тип инсталляции - выборочная (`custom`).
+
+![Install Type](assets/install-cordova-on-windows/20220724_135233.png)
+
+Указываем папку с JDK которое будет использовать Gradle для сборки проектов.
+
+![JDK Folder](assets/install-cordova-on-windows/20220724_135538.png)
+
+Выбираем тему редактора.
+
+![Theme](assets/install-cordova-on-windows/20220724_135708.png)
+
+Указываем папку где будут храниться файлы `Android SDK`.
+
+![Android SDK](assets/install-cordova-on-windows/20220724_135856.png)
+
+![Android SDK folder](assets/install-cordova-on-windows/20220724_140015.png)
+
+Соглашаемся с лицензией и скачиваем компоненты Android SDK.
+
+![License](assets/install-cordova-on-windows/20220724_140240.png)
+
+Ждем окончания загрузки и установки компонент.
+
+![Download Components](assets/install-cordova-on-windows/20220724_140340.png)
+
+На этом моменте мастер настроек заканчивается и Вас направляют в окно приветствия `Android Studio`.
+
+Настройки сохраняются в папку:
+
+```
+%APPDATA%/Google/AndroidStudio2021.2
+```
+
+Для меня это:
+
+```
+c:\Users\Ivan\AppData\Roaming\Google\AndroidStudio2021.2
+```
+
+> Если удалить папку настроек, то мастер настроек запуститься вновь при запуске `studio64.exe`.
+
+Идем в настройки `Android SDK` - `Projects` / `More Actions` / `SDK Manager`
+
+![SDK Manager](assets/install-cordova-on-windows/20220724_141439.png)
+
+В разделе `Appearance & Behavior` \ `System Settings` \ `Android SDK` \ `SKD Tools` указываем следующие компоненты:
+
+- Android SDK Command-line Tools (latest)
+
+![Android SDK Command-line Tools (latest)](assets/install-cordova-on-windows/20220724_142129.png)
+
+Жмем `Apply` и загружаем указанные пакеты.
+
+![Download](assets/install-cordova-on-windows/20220724_142643.png)
+
+Ставим галочку на `Show Package Details` и подключаем `Android SDK Build Tools` версии `30.0.3`. Установленную по умолчанию версию можно отключить.
+
+![30.0.3](assets/install-cordova-on-windows/20220724_142855.png)
+
+Жмем `Apply`, качаем пакеты.
+
+Жмем `OK` и возвращаемся в окно приветствия.
+
+Добавляем системную переменную `ANDROID_SDK_ROOT` указывающую на папку в которой хранится SDK.
+
+```
+ANDROID_SDK_ROOT = `z:\Programs\android-sdk`
+```
+
+![ANDROID_SDK_ROOT](assets/install-cordova-on-windows/20220724_143651.png)
+
+Узнать, путь к Android SDK на вашей машине можно в настройках SDK - `Android SDK` - `Projects` / `More Actions` / `SDK Manager`
+
+![Android SDK Location](assets/install-cordova-on-windows/20220724_144108.png)
+
+Добавляем в `PATH` следующие пути:
+
+- z:\Programs\android-sdk\cmdline-tools\latest\bin
+- z:\Programs\android-sdk\platform-tools
+- z:\Programs\android-sdk\emulator
+- z:\Programs\android-sdk\build-tools\33.0.0
+
+![PATH](assets/install-cordova-on-windows/20220724_144718.png)
+
+Возвращаемся в `Android Studio` и заходим в `Projects` / `More Actions` / `Virtual Device Manager`
+
+![Virtual Device Manager](assets/install-cordova-on-windows/20220724_145536.png)
+
+Жмем `Create Device`.
+
+![Create Device](assets/install-cordova-on-windows/20220724_145807.png)
+
+Выбираем модель устройства которое будет эмулироваться.
+
+![Select Device](assets/install-cordova-on-windows/20220724_150031.png)
+
+Выбираем интересующую нас операционную систему. Если активен пункт `download` жмем его, для того что бы скачать образ системы.
+
+![Select a system image](assets/install-cordova-on-windows/20220724_150214.png)
+
+Указываем имя устроиства `default`. Это важно, так как `Cordova` по умолчанию будет использовать устройство с именем `default` при отладке вашего проекта. Иначе, придется указывать имя устройства в ручную, что усложнит команду запуска.
+
+![AVD Name](assets/install-cordova-on-windows/20220724_150519.png)
+
+Запускаем созданное устройство для того, что бы убедится в том, что оно работает.
+
+![Run](assets/install-cordova-on-windows/20220724_150904.png)
+
+![Android](assets/install-cordova-on-windows/20220724_151013.png)
+
+# Установка Apache Cordova
+
+Для установки `Apache Cordova` нежен пакетный менеджер `npm` который входит в состав `NodeJS`.
+
+Скачать и установить NodeJS: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+
+Устанавливаем `Apache Cordova`.
+
+```
+npm install cordova -g
+```
+
+# Создание проекта
 
 ```
 cordova create MyApp
@@ -181,41 +199,82 @@ cd MyApp
 cordova platform add android
 ```
 
-Запускаем.
+В папку `www` помещаем файлы вашего веб приложения (страницы).
+
+# Запуск проекта
 
 ```
 cordova run android
 ```
 
-В результате у вас должен запуститься эмулятор с именем "default" в котором запустится ваше приложение. По умолчанию это картинка с коробкой роботом.
+![Hello World!](assets/install-cordova-on-windows/20220724_213534.png)
 
-Если не получилось: `goto 0`
+По умолчанию cordova запускает приложение на эмуляторе с именем `default`. Для того, что бы указать какой эмулятор использовать указываем параметр `--target="name"`.
 
-Если у вас несколько эмуляторов, то можно сделать следующее.
+```
+cordova run android --target="Nexus_One_API_25"
+```
 
-Получаем список доступных утсройств:
+![--target="Nexus_One_API_25"](assets/install-cordova-on-windows/20220724_214457.png)
+
+Получить список устройств можно следующим образом:
 
 ```
 cordova run android --list
 ```
 
-Указываем устройство при запуске:
+![--list](assets/install-cordova-on-windows/20220724_214308.png)
+
+# Подпись проекта
+
+Генерируем ключ:
 
 ```
-cordova run android --target="default"
+keytool -genkey -v -keystore myapp.keystore -alias myapp -keyalg RSA -keysize 2048 -validity 10000
 ```
 
-В папке проекта есть папка `WWW`. В нее помещаем ваше веб приложение, это обычная страница `html`, запускаем `cordova run android` и вуаля, вы автор настоящего приложения Android.
+Создаем файл `build.json`.
 
-Также, любопытства ради, можно попробовать `cordova build` и получить в папке `platforms/android/app/build/outputs/apk/debug/app-debug.apk` который можно скопировать на телефон и установить как приложение, и оно будет работать.
+```json
+{
+    "android": {
+        "debug": {
+            "keystore": "./myapp.keystore",
+            "storePassword": "123123",
+            "alias": "myapp",
+            "password" : "123123",
+            "keystoreType": "jks",
+            "packageType": "apk"
+        },
+        "release": {
+            "keystore": "./myapp.keystore",
+            "storePassword": "123123",
+            "alias": "myapp",
+            "password" : "123123",
+            "keystoreType": "jks",
+            "packageType": "apk"
+        }
+    }
+}
+```
 
-## Иконка приложения
+По умолчанию для `release` используется `"packageType": "bundle"` и выходной файл имеет формат `.aab`. По непроверенной мной информации файл формата `.aab` нужен для публикации на маркете.
 
-Для иконки нужно несколько `png` разного размера (размеры гляди в примере).
+# Сборка проекта
 
-В проекте создаем папку `/resource/android/icon` и кладем туда картинки с иконками. 
+```
+cordova build android --release
+```
 
-Далее в `config.xml` (в корне проекта) добавляем.
+![cordova build android --release](assets/install-cordova-on-windows/20220724_215805.png)
+
+# Иконка приложения
+
+Для иконки нужно несколько `png` разного размера.
+
+В проекте создаем папку `/resource/android/icon` и помещаем туда картинки с иконками.
+
+В `config.xml` добавляем.
 
 ```xml
 <platform name="android">
@@ -227,52 +286,3 @@ cordova run android --target="default"
     <icon src="resource/android/icon/xxxhdpi.png" width="192" height="192" density="xxxhdpi" />
 </platform>
 ```
-
-## Подписываем приложение (финальная сборка)
-
-Делаем все в корне проекта.
-
-Генерируем ключ:
-
-```
-keytool -genkey -v -keystore appname.keystore -alias appname -keyalg RSA -keysize 2048 -validity 10000
-```
-
-После запуска `keytool` спросит набор информации для подписи, после чего будет создан файл `appname.keystore`.
-
-Создаем `build.json`. 
-
-По умолчанию для `release` используется `"packageType": "bundle"` и выходной файл имеет формат `aab`. Я пока точно не уверен, но возможно для публикации на маркете надо именно `.aab` а не `.apk`.
-
-```json
-{
-    "android": {
-        "debug": {
-            "keystore": "./appname.keystore",
-            "storePassword": "1234",
-            "alias": "appname",
-            "password" : "1234",
-            "keystoreType": "jks",
-            "packageType": "apk"
-        },
-        "release": {
-            "keystore": "./appname.keystore",
-            "storePassword": "1234",
-            "alias": "appname",
-            "password" : "1234",
-            "keystoreType": "jks",
-            "packageType": "apk"
-        }
-    }
-}
-```
-
-Теперь можно выполнить финальную сборку. 
-
-```
-cordova build android --release
-```
-
-Готовый apk находим где то тут `platforms\android\app\build\outputs\apk\release\app-release.aab `
-
-Есть мнение, что файл готов к публикации на маркете, но это не точно.

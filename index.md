@@ -2,6 +2,7 @@
 
 Мой бложек на всякие там IT темы.
 
+- [18.10.2022 - Orange PI Zero - установка Armbian Linux](/pages/orangepi_armbian_install.md)
 - [24.08.2022 - Expo.dev - React Native твоей мечты](/pages/expo_dev.md)
 - [04.08.2022 - React Native - установка и создание проекта](/pages/react_native_install.md)
 - [24.07.2022 - Установка Cordova в Windows](/pages/install-cordova-on-windows.md)
